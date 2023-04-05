@@ -24,7 +24,6 @@ class Employee
 public:
     int count_extra_working_hour();
     int count_salary();
-    int a(int){return 0;};
 
 private:
     long id;
@@ -82,8 +81,6 @@ int Working_hour::get_numeric_working_interval()
 
 int Employee::count_extra_working_hour()
 {
-    a(age);
-    age = 4;
     int total_working_hours = 0;
     for (int i = 0; i < employee_working_periods.size(); i++)
         total_working_hours += employee_working_periods[i]->get_numeric_working_interval();
