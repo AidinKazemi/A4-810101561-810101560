@@ -411,7 +411,6 @@ void Data_base::read_csv_employees()
         new_employee = set_emp_age(new_employee, all_words);
         new_employee = set_emp_level(new_employee, all_words);
         new_employee.set_salary_config(this);
-        new_employee.get_salary_config()->get_level_name();
 
         all_employees.push_back(new_employee);
     }
