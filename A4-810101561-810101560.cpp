@@ -100,8 +100,6 @@ private:
 class Employee
 {
 public:
-    int count_extra_working_hour();
-    int count_salary();
     long get_emp_id() { return id; };
     string get_emp_name() { return name; };
     string get_emp_level() { return level; };
@@ -111,7 +109,7 @@ public:
     void set_emp_name(string the_name) { name = the_name; };
     void set_emp_age(int the_age) { age = the_age; };
     void set_emp_level(string the_level) { level = the_level; };
-    void find_salary_config(Data_base *all_information);
+    void set_salary_config(Data_base *all_information);
 
 private:
     long id;
@@ -121,26 +119,17 @@ private:
     Salary_config *employee_salary_config = new Salary_config;
 };
 
-int Employee::count_extra_working_hour()
-{
-    int total_working_hours = 0;
-    // for (int i = 0; i < employee_working_periods.size(); i++)
-    //     total_working_hours += employee_working_periods[i]->get_end_time() - employee_working_periods[i]->get_start_time();
-    // int official_working_hours = employee_salary_config->get_official_working_hours();
-    // return total_working_hours - official_working_hours;
-}
+// int Employee::count_salary()
+// {
+//     int extra_working_hours = this->count_extra_working_hour();
+//     int official_working_hours = employee_salary_config->get_official_working_hours();
+//     int salary_per_hour = employee_salary_config->get_salary_per_hour();
 
-int Employee::count_salary()
-{
-    int extra_working_hours = this->count_extra_working_hour();
-    int official_working_hours = employee_salary_config->get_official_working_hours();
-    int salary_per_hour = employee_salary_config->get_salary_per_hour();
-
-    if (extra_working_hours > 0)
-        return official_working_hours * salary_per_hour + extra_working_hours * salary_per_hour;
-    else
-        return (extra_working_hours + official_working_hours) * salary_per_hour;
-};
+//     if (extra_working_hours > 0)
+//         return official_working_hours * salary_per_hour + extra_working_hours * salary_per_hour;
+//     else
+//         return (extra_working_hours + official_working_hours) * salary_per_hour;
+// };
 
 class Data_base
 {
@@ -171,7 +160,7 @@ vector<Salary_config *> Data_base::get_the_salary_configs_pointers()
     return pointers;
 };
 
-void Employee::find_salary_config(Data_base *all_information)
+void Employee::set_salary_config(Data_base *all_information)
 {
     string level_name = this->level;
     vector<Salary_config *> all_salary_configs = all_information->get_the_salary_configs_pointers();
@@ -421,14 +410,12 @@ void Data_base::read_csv_employees()
         new_employee = set_emp_name(new_employee, all_words);
         new_employee = set_emp_age(new_employee, all_words);
         new_employee = set_emp_level(new_employee, all_words);
-        new_employee.find_salary_config(this);
+        new_employee.set_salary_config(this);
         new_employee.get_salary_config()->get_level_name();
 
         all_employees.push_back(new_employee);
     }
 }
-
-void get_input()
 
 int main()
 {
