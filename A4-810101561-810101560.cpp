@@ -21,6 +21,17 @@ const int FIFTH_WORD = 4;
 const int SIXTH_WORD = 5;
 const int JUNK = 4;
 const int LEVELS_COUNT = 4;
+const string REPORT_SALARIES = "report_salaries";
+const string REPORT_EMPLOYEE_SALARY = "report_employee_salary";
+const string REPORT_TEAM_SALARY = "report_team_salary";
+const string REPORT_TOTAL_HOURS_PER_DAY = "report_total_hours_per_day";
+const string REPORT_EMPLOYEE_PER_HOUR = "report_employee_per_hour";
+const string SHOW_SALARY_CONFIG = "show_salary_config";
+const string UPDATE_SALARY_CONFIG = "update_salary_config";
+const string ADD_WORKING_HOURS = "add_working_hours";
+const string DELETE_WROKING_HOURS = "delete_working_hours";
+const string UPDATE_TEAM_BONUS = "update_team_bouns";
+const string FIND_TEAM_FOR_BONUS = "find_team_for_bouns";
 
 class Salary_config
 {
@@ -29,8 +40,8 @@ public:
     int get_salary_per_hour() { return salary_per_hour; };
     int get_salary_per_extra_hour() { return salary_per_extra_hour; };
     string get_level_name() { return level; };
-    int get_base_salary() {return base_salray;};
-    int get_tax_percentage() {return tax_percentage;};
+    int get_base_salary() { return base_salray; };
+    int get_tax_percentage() { return tax_percentage; };
     void set_level(string the_level) { level = the_level; };
     void set_base_salary(int the_base_salary) { base_salray = the_base_salary; };
     void set_salary_per_hour(int the_salary_per_hour) { salary_per_hour = the_salary_per_hour; };
@@ -411,10 +422,56 @@ void Data_base::read_csv_employees()
         new_employee = set_emp_age(new_employee, all_words);
         new_employee = set_emp_level(new_employee, all_words);
         new_employee.set_salary_config(this);
-        new_employee.get_salary_config()->get_level_name();
 
         all_employees.push_back(new_employee);
     }
+}
+
+void report_salaries(Data_base &all_information )
+{
+    vector<Employee> all_employees = all_information.get_the_employees();
+    for(int i = 0; i < all_employees.size(); i++);
+}
+
+void read_input(Data_base &all_information)
+{
+    string command;
+    cin >> command;
+    if (command == REPORT_SALARIES)
+    {
+    }
+    else if (command == REPORT_EMPLOYEE_SALARY)
+    {
+    }
+    else if (command == REPORT_TEAM_SALARY)
+    {
+    }
+    else if (command == REPORT_TOTAL_HOURS_PER_DAY)
+    {
+    }
+    else if (command == REPORT_EMPLOYEE_SALARY)
+    {
+    }
+    else if (command == REPORT_EMPLOYEE_PER_HOUR)
+    {
+    }
+    else if (command == SHOW_SALARY_CONFIG)
+    {
+    }
+    else if (command == UPDATE_SALARY_CONFIG)
+    {
+    }
+    else if (command == ADD_WORKING_HOURS)
+    {
+    }
+    else if (command == UPDATE_TEAM_BONUS)
+    {
+    }
+    else if (command == FIND_TEAM_FOR_BONUS)
+    {
+    }
+    else
+        cout << "invalid command";
 }
 
 int main()
@@ -424,29 +481,29 @@ int main()
     return 0;
 }
 
-    // cout << ali[0].get_team_id() << " "
-    //      << ali[0].get_lead_id() << " "
-    //      << ali[0].get_bonus_working_hours_max_variance() << " "
-    //      << ali[0].get_member_ids()[0] << " "
-    //      << ali[0].get_bonus_min_working_hours() << endl;
-    // vector<Working_hour> bli = all_information.get_the_working_hours();
-    // cout << bli[7].get_start_time() << " "
-    //      << bli[7].get_end_time() << " "
-    //      << bli[7].get_emp_id() << " "
-    //      << bli[7].get_day() << endl;
-    // vector<Salary_config> gli = all_information.get_the_salary_configs();
-    // cout << gli[2].get_level_name() << " "
-    // << gli[2].get_official_working_hours() << " "
-    // << gli[2].get_salary_per_extra_hour() << " "
-    // << gli[2].get_salary_per_hour() << " "
-    // << gli[2].get_tax_percentage() << " "
-    // << gli[2].get_base_salary() << endl;
-    // vector<Salary_config *> nli = all_information.get_the_salary_configs_pointers();
-    // cout << nli[2]->get_level_name() << " "
-    // << nli[2]->get_base_salary() << endl;
-    // vector<Employee> cli = all_information.get_the_employees();
-    // cout << cli[2].get_salary_config()->get_level_name() << " "
-    // << cli[2].get_emp_age() << " "
-    // << cli[2].get_emp_id() << " "
-    // << cli[2].get_emp_level() << " "
-    // << cli[2].get_emp_name() << endl;
+// cout << ali[0].get_team_id() << " "
+//      << ali[0].get_lead_id() << " "
+//      << ali[0].get_bonus_working_hours_max_variance() << " "
+//      << ali[0].get_member_ids()[0] << " "
+//      << ali[0].get_bonus_min_working_hours() << endl;
+// vector<Working_hour> bli = all_information.get_the_working_hours();
+// cout << bli[7].get_start_time() << " "
+//      << bli[7].get_end_time() << " "
+//      << bli[7].get_emp_id() << " "
+//      << bli[7].get_day() << endl;
+// vector<Salary_config> gli = all_information.get_the_salary_configs();
+// cout << gli[2].get_level_name() << " "
+// << gli[2].get_official_working_hours() << " "
+// << gli[2].get_salary_per_extra_hour() << " "
+// << gli[2].get_salary_per_hour() << " "
+// << gli[2].get_tax_percentage() << " "
+// << gli[2].get_base_salary() << endl;
+// vector<Salary_config *> nli = all_information.get_the_salary_configs_pointers();
+// cout << nli[2]->get_level_name() << " "
+// << nli[2]->get_base_salary() << endl;
+// vector<Employee> cli = all_information.get_the_employees();
+// cout << cli[2].get_salary_config()->get_level_name() << " "
+// << cli[2].get_emp_age() << " "
+// << cli[2].get_emp_id() << " "
+// << cli[2].get_emp_level() << " "
+// << cli[2].get_emp_name() << endl;
