@@ -1,0 +1,85 @@
+Orders:
+	Reports:
+		report_salaries:
+			in: -
+			out: ((ID, name, totalWH*, total_earning*)) for all employees
+			
+		report_employee_salary:
+			in: ID
+			out: ID, name, age, level, teamid, totalWH*, absent_days*, salary*, bouns_amount*, tax_amount*, total_earning*
+		
+		report_team_salary:
+			in: teamid
+			out: teamid, headid, headname, ttwh*, amwh*, bouns, ((id, total earning*)) for all members
+		
+		report_total_hours_per_day:
+			in: start_day, end_day
+			out: ((tWH_per_day*)) for all days, minWH_per_day*, maxWH_per_day*
+		
+		report_employee_per_hour:
+			in: start_hour, end_hour
+			out: ((tWH_per_hour*)) for all hours, minWH_per_hours*, maxWH_per_hours*
+
+
+	Configs:
+		show_salary_config:
+			in: level
+			out: base_salray, salary_per_hour, salary_per_extra_hour, official_working_hours, tax_percentage
+			
+		update_salary_config:
+			in: level, base_salray, salary_per_hour, salary_per_extra_hour, official_working_hours, tax_percentage
+			out: -
+
+		
+	Working_hours:	
+		add_working_hours:
+			in: employee_id, day, start, end
+			out: -
+
+		delete_working_hours:
+			in: employee_id, day
+			out: -
+
+
+	Team:
+		update_team_bouns:
+			in: team_id ,bouns
+			out: -
+
+		
+	Bouns:
+		find_team_for_bouns:
+			in: -
+			out: ((teams_id)) for all good teams
+	
+	
+	
+	
+	
+Functions:
+	find_employee_by_id
+	find_team_by_id
+	calculate_sum_of_WH_per_employee
+	calculate_sum_of_WH_per_day
+	calculate_sum_of_WH_per_hour
+	find_salaryconfig_by_level
+	find_workinghour_by_employeeid_and_day
+	
+	
+	
+Methods:
+	Employees:
+		calculate totalWH
+		calculate absent_days
+		calculate bouns_amount
+		calculate tax_amount
+		calculate salary
+		calculate total_earning
+		
+	Team:
+		calculate team totalWH
+		calculate average teamWH
+		$find_team_for_bouns
+	
+	Working_hours:
+		sum
